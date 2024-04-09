@@ -1,0 +1,105 @@
+<html>
+    <head>
+        <title>Task List</title>
+    </head>
+    <style>
+        /* Basic CSS styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+        main {
+            padding: 20px;
+        }
+        .card {
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .card-header {
+            background-color: #eee;
+            border-bottom: 1px solid #ccc;
+            padding: 10px;
+        }
+        .card-body {
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'tasks-form' %}" class="btn btn-primary"><i class="ph-plus me-2"></i> Add Task</li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <div class="content">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>{{ request.breadcrumb }}</h5>
+                    </div>
+                    <div class="card-body">
+                        <table class="table datatable-button-html5-columns">
+                            <thead>
+                                <tr>
+                                    <th>Sr. No</th>
+                                    <th>Task Details</th>
+                                    <th>Task Type</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for task in tasks %}
+                                <tr>
+                                    <td>{{ forloop.counter }}</td>
+                                    <td>{{ task.taskDetail }}</td>
+                                    <td>{{ task.taskType }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Add your JavaScript code here
+    });
+    </script>
+</body>
+</html>

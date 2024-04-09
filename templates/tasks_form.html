@@ -1,0 +1,52 @@
+{% load crispy_forms_tags %}
+
+<html>
+    <head>
+        <title>Task Form</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    </head>
+    <body>
+        <div class="container mt-5">
+            <form autocomplete="off" class="form-validate-jquery" method="POST">
+                {% csrf_token %}
+                <div class="content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0">{{request.breadcrumb}}</h5>
+                        </div>
+                        <form  autocomplete="off" class="form-validate-jquery" method="POST">
+                            {% csrf_token %}
+                            <div class="card-body">
+                                
+                                <div class="col-12">
+                                    <div class="mb-4">
+                                        <label class="fw-bold fs-5">Task Details</label>
+                                        <div class="col-12"><br>
+                                            <input type="text" placeholder="Task Details" name="task_detail"
+                                                value="{{taskform.taskDetail}}" class="form-control" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            
+                                <div class="col-12">
+                                    <label class="form-label">Task Type</label>
+                                    <select class="form-control" name="task_type" required>
+                                        <option value="Pending">Pending</option>
+                                        <option value="Done">Done</option>
+                                    </select>
+                                </div>
+                                    
+                            </div>
+                            <div class="card-footer d-flex justify-content-end">
+                                <!-- <button type="reset" class="btn btn-light" id="reset">Reset</button> -->
+                                <button type="submit" class="btn btn-primary ms-3">Submit <i class="ph-paper-plane-tilt ms-2"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </form>
+        </div>    
+    </body>    
+</html>
+
